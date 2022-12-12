@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "alchemy-sdk": "^2.2.3",
+    "dotenv": "^16.0.3",
     "ethereumjs-tx": "^2.1.2",
     "web3": "^1.8.1"
   }

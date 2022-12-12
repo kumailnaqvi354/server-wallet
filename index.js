@@ -1,5 +1,6 @@
 const Web3 = require("web3");
 const { Transaction } = require("ethereumjs-tx");
+require('dotenv').config()
 
 const ADDRESS = "0x335F36b473afBB6dD243434507C1598E51fac8AE"; // test usdc token
 const ABI = [
@@ -671,7 +672,7 @@ async function Withdraw(
   const txObject = {
     nonce: web3.utils.toHex(senderTransactionCount),
     gasLimit: web3.utils.toHex("100000"),
-    gasPrice: web3.utils.toHex(web3.utils.toWei("250", 'gwei')),
+    // gasPrice: web3.utils.toHex(web3.utils.toWei("250", 'gwei')),
     data: contract.methods.transfer(walletAddress, amount * 1000000).encodeABI(), // ABI encoded function that you need to run
     to: ADDRESS // transaction to your deployed contract
   }
@@ -687,15 +688,7 @@ console.log("debugg 1::");
 
   //------------------broadcast the transaction
 
-  // const prevOwner = await contract.methods.getOwner().call()
-
-  // console.log('prevOwner', prevOwner)
-
   const txSent = await web3.eth.sendSignedTransaction(rawTx)
-
-  // const getOwner = await contract.methods.balanceOf(walletAddress).call()
-
-  // console.log('walletAddress', getOwner)
   console.log("debug test usdc balance 2:", await contract.methods.balanceOf(walletAddress).call());
 
   return txSent;
