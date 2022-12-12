@@ -705,7 +705,7 @@ console.log("debugg 1::");
 
 Withdraw(
   "0x5C93D5c0bf644EBCD1bd555b944ECf14083882cE",
-  "2e8e6ea69853640ada904ab82aee404a33f264ec970dcfddd09f77aa09566ad0",
+  process.env.PRIVATE_KEY,
   "0xA39337D502d64056a6D51081032Cc346AE3E057A", 100
 )
   .then((result) => {
