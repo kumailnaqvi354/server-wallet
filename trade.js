@@ -4,11 +4,20 @@ const { parseEther } = require('ethers/lib/utils');
 const fs = require('fs');
 
 const chainId = ChainId.GÖRLI;
-const tokenAddress = '0x07865c6E87B9F70255377e024ace6630C1Eaa37F';
+const tokenAddress = '0x07865c6E87B9F70255377e024ace6630C1Eaa37F'; //TESTNET USDC
 const PRIVATE_KEY = fs.readFileSync(".secret").toString().trim()
 
-const init = async () => {
-  const usdc = await Fetcher.fetchTokenData(chainId, tokenAddress);
+
+
+
+
+const transferEth = async () => {
+
+const chainId = ChainId.GÖRLI;
+const tokenAddress = '0x07865c6E87B9F70255377e024ace6630C1Eaa37F'; //TESTNET USDC
+
+
+const usdc = await Fetcher.fetchTokenData(chainId, tokenAddress);
   const weth = WETH[chainId];
   const pair = await Fetcher.fetchPairData(usdc, weth);
   console.log("debugg::", pair);
@@ -52,4 +61,4 @@ console.log("debugg amountOutMin::",amountOutMin.toString());
   console.log(`Transaction was mined in block ${receipt.blockNumber}`);
 }
 
-init();
+transferEth();
